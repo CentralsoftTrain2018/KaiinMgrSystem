@@ -20,7 +20,7 @@ public class Main
         MenuItem selectedMenuIten;
         do
         {
-            selectedMenuIten = printMenu();             //メニューを表示する
+            selectedMenuIten = printMenu();  //メニューを表示する
             selectedMenuIten.excecAction();
         }
         while( selectedMenuIten != MenuItem.END );
@@ -35,7 +35,7 @@ public class Main
         {
         	ConsoleUtil.print(
         			"希望のメニュー番号を入力してください。 "
-        			+ "1:終了, 2:登録, 3:全データリスト表示, 4:検索"
+        			+ MenuItem.getMenuString()
         			);
 
         	int menuNum;
