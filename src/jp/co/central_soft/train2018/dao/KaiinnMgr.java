@@ -14,24 +14,6 @@ import java.util.List;
 //会員管理
 public class KaiinnMgr
 {
-	public void sample( Kaiinn k )
-	{
-
-		try(
-				Connection con = Dao.getConnection();
-				PreparedStatement	stmt = con.prepareStatement(PUT_SQL);
-			)
-		{
-			//--------------------
-		}
-		catch( ClassNotFoundException | SQLException e )
-		{
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-	}
-
-
 	private static final String PUT_SQL =
 			"INSERT INTO kaiinn " +
 			"( " +
@@ -57,6 +39,7 @@ public class KaiinnMgr
 			+ "where "
 			+ " kaiinNo = ? ";
 
+	//-------------------------------
 	public void put( Kaiinn k ) throws ExistException
 	{
 
@@ -65,7 +48,7 @@ public class KaiinnMgr
 				PreparedStatement	stmt = con.prepareStatement(PUT_SQL);
 			)
 		{
-			if( this.get(k.getKaiinNo(),con) != null )
+			if( this.get( k.getKaiinNo(), con ) != null )
 				throw new ExistException();
 
 			/* Statementの作成 */
@@ -83,6 +66,7 @@ public class KaiinnMgr
 		}
 	}
 
+	//---------------------------------------------
 	private Kaiinn get(int kaiinNo, Connection con)
 	{
 		Kaiinn k = null;
@@ -92,11 +76,10 @@ public class KaiinnMgr
 		)
 		{
 			/* Statementの作成 */
-			stmt.setInt(	1, kaiinNo 	);
+			stmt.setInt( 1, kaiinNo );
 
 			/* ｓｑｌ実行 */
 			ResultSet rset = stmt.executeQuery();
-
 
 			while(rset.next())
 			{
@@ -134,6 +117,7 @@ public class KaiinnMgr
 		return k;
 	}
 
+	//-------------------------------
 	public Collection<Kaiinn> values()
 	{
 		List<Kaiinn>  list = new ArrayList<Kaiinn>();
