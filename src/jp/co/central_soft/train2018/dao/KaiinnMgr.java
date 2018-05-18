@@ -130,7 +130,6 @@ public class KaiinnMgr
 			/* ｓｑｌ実行 */
 			ResultSet rset = stmt.executeQuery();
 
-
 			while(rset.next())
 			{
 				Kaiinn k = new Kaiinn(
